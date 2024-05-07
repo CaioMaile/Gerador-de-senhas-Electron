@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de senha</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Gerando Senhas</h1>
+    <div>
+        <input type="text" name="senha" placeholder="Coloque senha"/>
+        <button onclick="GerarSenha()">Gerar senha </button>
+        <button onclick="VerificarSenha()">verificar senha</button>
+    </div>
+
+    <script>
+        const GerarSenha = () =>{
+            const entradaSenha = document.querySelector('input')
+            const caracteres = "abcdABCD!@$#1234"
+            let senha = ""
+            for (let i = 0; i < 10; i++){
+                const aleatorio = Math.floor(Math.random()*caracteres.length)
+                senha += caracteres[aleatorio]
+            }
+
+            entradaSenha.value = senha
+        }
+        
+        const VerificarSenha = () =>{
+            const entradaSenha = document.querySelector('input')
+            const titulo = document.querySelector('h1')
+            const tamanho = entradaSenha.value.length
+            if (tamanho<4)
+                titulo.innerHTML = "Senha curta"
+            else if(tamanho<8)
+                titulo.innerHTML = "Senha media" 
+            else
+                titulo.innerHTML = "Senha longa"
+            
+        }
+    </script>
+</body>
+</html>
